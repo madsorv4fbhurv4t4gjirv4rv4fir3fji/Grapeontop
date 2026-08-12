@@ -8,6 +8,7 @@
 
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
     try { localStorage.setItem('grape-theme', theme); } catch (e) {}
   }
 
