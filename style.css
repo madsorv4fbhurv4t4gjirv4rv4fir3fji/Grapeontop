@@ -1,0 +1,314 @@
+/* ============================================
+   Grape — minimalist game site
+   ============================================ */
+
+:root {
+  --bg: #FAF7FC;
+  --bg-raised: #FFFFFF;
+  --ink: #211527;
+  --ink-soft: #4A3B52;
+  --muted: #8B7D96;
+  --grape: #7C3FA8;
+  --grape-light: #B084D6;
+  --grape-pale: #EDE1F7;
+  --line: #E4D9EE;
+  --radius: 2px;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--grape);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- layout shells ---------- */
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+header.site {
+  padding: 28px 0 0;
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand .cluster { width: 22px; height: 26px; }
+
+nav.site-links {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+nav.site-links a { border-bottom: 1px solid transparent; padding-bottom: 2px; }
+nav.site-links a:hover { color: var(--grape); border-color: var(--grape-light); }
+
+footer.site {
+  margin-top: 96px;
+  border-top: 1px solid var(--line);
+  padding: 22px 0 40px;
+}
+
+footer.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 76px 0 48px;
+}
+
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grape);
+  margin: 0 0 14px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  max-width: 11ch;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ---------- game grid ---------- */
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 20px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.game-card {
+  background: var(--bg-raised);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.15s ease;
+}
+
+.game-card:hover { background: var(--grape-pale); }
+
+.game-card .icon {
+  width: 34px;
+  height: 34px;
+}
+
+.game-card h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.game-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.difficulty .dots { display: flex; gap: 4px; }
+.difficulty .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--line);
+}
+.difficulty .dot.on { background: var(--grape); }
+
+.play-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grape);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.game-card:hover .play-link { text-decoration: underline; }
+
+/* ---------- game pages ---------- */
+
+.game-page header.site { margin-bottom: 8px; }
+
+.game-shell {
+  padding: 40px 0 20px;
+}
+
+.game-shell h1 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  margin: 0 0 6px;
+}
+
+.game-shell .sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.back-link:hover { color: var(--grape); }
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hud {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.hud strong { color: var(--grape); font-size: 16px; }
+
+canvas, .board {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+
+.controls-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+button.grape-btn {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+button.grape-btn:hover { background: var(--grape); }
+
+/* memory board */
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  grid-template-rows: repeat(4, 72px);
+  gap: 8px;
+}
+
+.memory-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  user-select: none;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.memory-card.flipped, .memory-card.matched {
+  background: var(--grape-pale);
+  border-color: var(--grape-light);
+}
+.memory-card.matched { opacity: 0.45; cursor: default; }
+.memory-card:not(.flipped):not(.matched):hover { background: var(--grape-pale); }
+
+@media (max-width: 480px) {
+  .memory-board {
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(4, 60px);
+  }
+}
